@@ -64,12 +64,20 @@ public class BasicItemController {
         return "basic/item";
     }
 
-    @PostMapping("/add")
+    //@PostMapping("/add")
     public String saveV3(Item item) {
         // @ModelAttribute 를 아애 생략 가능, @ModelAttribute 에 이름 속성없이 사용가능.
         // 클래스명 첫글자가 소문자로 바뀌어 (Item -> item)모델에 담김
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    @PostMapping("/add")
+    public String saveV4(Item item) {
+        // @ModelAttribute 를 아애 생략 가능, @ModelAttribute 에 이름 속성없이 사용가능.
+        // 클래스명 첫글자가 소문자로 바뀌어 (Item -> item)모델에 담김
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
     }
 
     @GetMapping("/{itemId}/edit")
